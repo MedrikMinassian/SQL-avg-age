@@ -1,0 +1,25 @@
+Total number of travelers 
+SELECT COUNT(*) AS TotalTravelers
+FROM Travelers;
+
+
+Popular Destinations 
+SELECT Destination, COUNT(*) AS NumberOfVisits
+FROM Travelers
+GROUP BY Destination
+ORDER BY NumberOfVisits DESC;
+
+Avg age of travelers 
+SELECT AVG(Age) AS AverageAge
+FROM Travelers;
+
+Travelers Nationality
+SELECT Nationality, COUNT(*) AS NumberOfTravelers
+FROM Travelers
+GROUP BY Nationality
+ORDER BY NumberOfTravelers DESC;
+
+Recent Travelers 
+SELECT *
+FROM Travelers
+WHERE TravelDate >= (SELECT MAX(TravelDate) FROM Travelers) - INTERVAL 30 DAY;
